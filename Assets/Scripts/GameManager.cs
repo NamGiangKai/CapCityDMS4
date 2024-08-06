@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     public bool isPlaying = false;
     public UnityEvent onPlay = new UnityEvent();
     public UnityEvent onGameOver = new UnityEvent();
+    public UnityEvent onMainMenu = new UnityEvent(); // Event for returning to the main menu
 
     private void Start()
     {
@@ -66,7 +67,8 @@ public class GameManager : MonoBehaviour
         {
             currentScore += Time.deltaTime;
 
-            if (Mathf.FloorToInt(currentScore) > 0 && Mathf.FloorToInt(currentScore) % 5 == 0)
+            // Trigger background transition based on the score
+            if (Mathf.FloorToInt(currentScore) > 0 && Mathf.FloorToInt(currentScore) % 50 == 0)
             {
                 scrollingBackground.TransitionToNextBackground();
             }
@@ -91,6 +93,13 @@ public class GameManager : MonoBehaviour
 
         isPlaying = false;
         onGameOver.Invoke();
+    }
+
+    public void ReturnToMainMenu()
+    {
+        isPlaying = false;
+        onMainMenu.Invoke();
+        // Additional logic to handle transitioning to the main menu, such as resetting the game state
     }
 
     public string PrettyScore()

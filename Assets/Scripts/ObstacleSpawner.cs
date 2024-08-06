@@ -17,7 +17,7 @@ public class ObstacleSpawner : MonoBehaviour
     private float timeAlive;
     private float timeUntilObstacleSpawn;
 
-    private Dictionary<GameObject, List<GameObject>> obstaclePools;
+    private Dictionary<GameObject, Queue<GameObject>> obstaclePools;
 
     private void Start()
     {
@@ -39,17 +39,17 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void InitializePools()
     {
-        obstaclePools = new Dictionary<GameObject, List<GameObject>>();
+        obstaclePools = new Dictionary<GameObject, Queue<GameObject>>();
 
         foreach (var prefab in obstaclePrefabs)
         {
-            var pool = new List<GameObject>();
+            var pool = new Queue<GameObject>();
 
             for (int i = 0; i < initialPoolSize; i++)
             {
                 GameObject obj = Instantiate(prefab, obstacleParent);
                 obj.SetActive(false);
-                pool.Add(obj);
+                pool.Enqueue(obj);
             }
 
             obstaclePools[prefab] = pool;
@@ -86,18 +86,16 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if (obstaclePools.ContainsKey(prefab))
         {
-            foreach (var obj in obstaclePools[prefab])
+            if (obstaclePools[prefab].Count > 0)
             {
-                if (!obj.activeInHierarchy)
-                {
-                    return obj;
-                }
+                GameObject obj = obstaclePools[prefab].Dequeue();
+                return obj;
             }
 
-            // If no inactive objects are found, instantiate a new one and add it to the pool
+            // If the pool is empty, instantiate a new one and add it to the pool
             GameObject newObj = Instantiate(prefab, obstacleParent);
             newObj.SetActive(false);
-            obstaclePools[prefab].Add(newObj);
+            obstaclePools[prefab].Enqueue(newObj);
             return newObj;
         }
 
@@ -109,6 +107,7 @@ public class ObstacleSpawner : MonoBehaviour
         foreach (Transform child in obstacleParent)
         {
             child.gameObject.SetActive(false);
+            // Optionally, you can return the objects to the pool here if needed
         }
     }
 
