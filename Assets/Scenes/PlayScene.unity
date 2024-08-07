@@ -3579,6 +3579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a5f4b99a8793b4693544201e0b54f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPosition: {x: -4.1, y: -3.47}
 --- !u!95 &1517221037
 Animator:
   serializedVersion: 5
@@ -4067,7 +4068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1634631289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4086,11 +4087,7 @@ MonoBehaviour:
   death: {fileID: 8300000, guid: bacf1341f5fef3642b5a454865d4b9dc, type: 3}
   checkpoint: {fileID: 0}
   wallTouch: {fileID: 0}
-  portalIn: {fileID: 0}
-  portalOut: {fileID: 0}
-  musicPlaylist:
-  - {fileID: 8300000, guid: 1a3c43019d6e823458de23d30758a8fa, type: 3}
-  - {fileID: 8300000, guid: a423b5eb307bad749b7008523dde24e0, type: 3}
+  musicPlaylist: []
 --- !u!4 &1634631290
 Transform:
   m_ObjectHideFlags: 0

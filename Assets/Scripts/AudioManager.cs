@@ -12,8 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip death;
     public AudioClip checkpoint;
     public AudioClip wallTouch;
-    public AudioClip portalIn;
-    public AudioClip portalOut;
+  
 
     [Header("--------- Music Playlist ---------")]
     public List<AudioClip> musicPlaylist = new List<AudioClip>();
