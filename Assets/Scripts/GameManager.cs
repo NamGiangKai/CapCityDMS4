@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
             currentScore += Time.deltaTime;
 
             // Trigger background transition based on the score
-            if (Mathf.FloorToInt(currentScore) > 0 && Mathf.FloorToInt(currentScore) % 50 == 0)
+            if (Mathf.FloorToInt(currentScore) > 0 && Mathf.FloorToInt(currentScore) % 10 == 0)
             {
                 scrollingBackground.TransitionToNextBackground();
             }
