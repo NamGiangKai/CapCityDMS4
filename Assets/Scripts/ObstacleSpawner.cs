@@ -137,7 +137,7 @@ public class ObstacleSpawner : MonoBehaviour
         _obstacleSpeed = obstacleSpeed;
     }
 
-    private void CheckScore()
+    public void CheckScore()
     {
         int score = Mathf.RoundToInt(GameManager.Instance.currentScore);
 

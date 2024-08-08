@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
             onScoreUpdated.Invoke(currentScore); // Notify listeners of the score update
 
             // Trigger background transition based on the score
-            if (Mathf.FloorToInt(currentScore) > 0 && Mathf.FloorToInt(currentScore) % 10 == 0)
+            if (Mathf.FloorToInt(currentScore) > 0 && Mathf.FloorToInt(currentScore) % 70 == 0)
             {
                 scrollingBackground.TransitionToNextBackground();
             }
