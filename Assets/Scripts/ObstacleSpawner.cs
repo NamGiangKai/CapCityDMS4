@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] obstaclePrefabs;
+    [SerializeField] private GameObject specialObstaclePrefab;
     [SerializeField] private Transform obstacleParent;
     public float obstacleSpawnTime = 3f;
     [Range(0, 1)] public float obstacleSpawnTimeFactor = 0.1f;
@@ -16,6 +17,7 @@ public class ObstacleSpawner : MonoBehaviour
     private float _obstacleSpeed;
     private float timeAlive;
     private float timeUntilObstacleSpawn;
+    private bool spawnSpecialObstacle = false;
 
     private Dictionary<GameObject, Queue<GameObject>> obstaclePools;
 
@@ -33,6 +35,7 @@ public class ObstacleSpawner : MonoBehaviour
         {
             timeAlive += Time.deltaTime;
             CalculateFactors();
+            CheckScore();
             SpawnLoop();
         }
     }
@@ -54,6 +57,17 @@ public class ObstacleSpawner : MonoBehaviour
 
             obstaclePools[prefab] = pool;
         }
+
+        // Initialize pool for special obstacle
+        var specialPool = new Queue<GameObject>();
+        for (int i = 0; i < initialPoolSize; i++)
+        {
+            GameObject obj = Instantiate(specialObstaclePrefab, obstacleParent);
+            obj.SetActive(false);
+            specialPool.Enqueue(obj);
+        }
+
+        obstaclePools[specialObstaclePrefab] = specialPool;
     }
 
     private void SpawnLoop()
@@ -69,7 +83,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        GameObject obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+        GameObject obstacleToSpawn = spawnSpecialObstacle ? specialObstaclePrefab : obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
         GameObject spawnedObstacle = GetPooledObject(obstacleToSpawn);
 
         if (spawnedObstacle != null)
@@ -107,7 +121,6 @@ public class ObstacleSpawner : MonoBehaviour
         foreach (Transform child in obstacleParent)
         {
             child.gameObject.SetActive(false);
-            // Optionally, you can return the objects to the pool here if needed
         }
     }
 
@@ -122,5 +135,26 @@ public class ObstacleSpawner : MonoBehaviour
         timeAlive = 1f;
         _obstacleSpawnTime = obstacleSpawnTime;
         _obstacleSpeed = obstacleSpeed;
+    }
+
+    private void CheckScore()
+    {
+        int score = Mathf.RoundToInt(GameManager.Instance.currentScore);
+
+        // Check if the score is a multiple of 10
+        if (score % 50 == 0 && score != 0)
+        {
+            if (!spawnSpecialObstacle)
+            {
+                StartCoroutine(SpawnSpecialObstacleForDuration(20f)); // Adjust the duration as needed
+            }
+        }
+    }
+
+    private IEnumerator SpawnSpecialObstacleForDuration(float duration)
+    {
+        spawnSpecialObstacle = true;
+        yield return new WaitForSeconds(duration);
+        spawnSpecialObstacle = false;
     }
 }

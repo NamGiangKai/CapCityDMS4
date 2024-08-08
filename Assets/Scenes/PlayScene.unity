@@ -704,7 +704,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &248575383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,6 +723,7 @@ MonoBehaviour:
   - {fileID: 8346991889301122125, guid: 879a91ccf990e6a4ea28d0f926f957e3, type: 3}
   - {fileID: 131988659586180972, guid: 3f929aa05e055204f87525ce107e1af6, type: 3}
   - {fileID: 8952739796749537544, guid: e09d291c3d436044082f47056ba3b5fb, type: 3}
+  specialObstaclePrefab: {fileID: 0}
   obstacleParent: {fileID: 233178570}
   obstacleSpawnTime: 10
   obstacleSpawnTimeFactor: 0.378
@@ -3227,10 +3228,10 @@ MonoBehaviour:
   - {fileID: 5236555981733824132, guid: 663006357581efc4d88fc265fac24d6b, type: 3}
   - {fileID: 1469267587682586990, guid: 733dca0697e8c15489a2a6dc08353c95, type: 3}
   - {fileID: 8346991889301122125, guid: 879a91ccf990e6a4ea28d0f926f957e3, type: 3}
-  - {fileID: 131988659586180972, guid: 3f929aa05e055204f87525ce107e1af6, type: 3}
   - {fileID: 8952739796749537544, guid: e09d291c3d436044082f47056ba3b5fb, type: 3}
+  specialObstaclePrefab: {fileID: 131988659586180972, guid: 3f929aa05e055204f87525ce107e1af6, type: 3}
   obstacleParent: {fileID: 233178570}
-  obstacleSpawnTime: 5
+  obstacleSpawnTime: 3
   obstacleSpawnTimeFactor: 0.1
   obstacleSpeed: 9
   obstacleSpeedFactor: 0.2
@@ -4635,6 +4636,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onMainMenu:
+    m_PersistentCalls:
+      m_Calls: []
+  onScoreUpdated:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1746513548

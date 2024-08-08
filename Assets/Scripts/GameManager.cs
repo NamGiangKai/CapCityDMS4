@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent onPlay = new UnityEvent();
     public UnityEvent onGameOver = new UnityEvent();
     public UnityEvent onMainMenu = new UnityEvent(); // Event for returning to the main menu
+    public UnityEvent<float> onScoreUpdated = new UnityEvent<float>(); // Score update event
 
     private void Start()
     {
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
         if (isPlaying)
         {
             currentScore += Time.deltaTime;
+            onScoreUpdated.Invoke(currentScore); // Notify listeners of the score update
 
             // Trigger background transition based on the score
             if (Mathf.FloorToInt(currentScore) > 0 && Mathf.FloorToInt(currentScore) % 10 == 0)
