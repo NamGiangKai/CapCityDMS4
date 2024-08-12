@@ -26,15 +26,28 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void Back()
+
+        public void Back()
     {
         settingMenu.SetActive(false);
         pauseMenu.SetActive(true); // Return to pause menu with time still paused
     }
-
-    public void MainMenu()
+    public void SettingMainMenu()
     {
-        Time.timeScale = 1; // Resume time before loading the main menu
-        SceneManager.LoadScene("PlayScene"); // Load the main menu scene
+        settingMenu.SetActive(true);
+    }
+
+    public void BackMainMenu()
+    {
+        settingMenu.SetActive(false);
+    }
+
+    public void InGameBackToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
     }
 }
+
+    
+

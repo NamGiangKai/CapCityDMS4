@@ -704,7 +704,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &248575383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,7 +725,7 @@ MonoBehaviour:
   - {fileID: 8952739796749537544, guid: e09d291c3d436044082f47056ba3b5fb, type: 3}
   specialObstaclePrefab: {fileID: 0}
   obstacleParent: {fileID: 233178570}
-  obstacleSpawnTime: 10
+  obstacleSpawnTime: 3
   obstacleSpawnTimeFactor: 0.378
   obstacleSpeed: 9
   obstacleSpeedFactor: 0.109
@@ -2121,6 +2121,7 @@ GameObject:
   - component: {fileID: 1032119184}
   - component: {fileID: 1032119183}
   - component: {fileID: 1032119182}
+  - component: {fileID: 1032119185}
   m_Layer: 5
   m_Name: BackToMenuButton
   m_TagString: Untagged
@@ -2192,10 +2193,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1951698694}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1032119185}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: BackToMainMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2203,18 +2204,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1929901811}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1032119183
 MonoBehaviour:
@@ -2254,6 +2243,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032119180}
   m_CullTransparentMesh: 1
+--- !u!114 &1032119185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032119180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cbc93be2c66443498992c39a29db3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreUI: {fileID: 0}
+  startMenuUI: {fileID: 0}
+  gameOverUI: {fileID: 0}
+  gameOverScoreUI: {fileID: 0}
+  gameOverHighscoreUI: {fileID: 0}
 --- !u!1 &1046975253
 GameObject:
   m_ObjectHideFlags: 0
@@ -3418,7 +3424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreUI: {fileID: 1119991794}
-  startMenuUI: {fileID: 1929901811}
+  startMenuUI: {fileID: 0}
   gameOverUI: {fileID: 1951698694}
   gameOverScoreUI: {fileID: 116700253}
   gameOverHighscoreUI: {fileID: 1875832316}
@@ -3503,7 +3509,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1511417547}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1582666526}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: InGameBackToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1511417547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3582,7 +3600,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 688372822}
-  groundCheckRadius: 0.2
+  groundCheckRadius: 1
 --- !u!50 &1517221033
 Rigidbody2D:
   serializedVersion: 4
@@ -5288,7 +5306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1929901812
 RectTransform:
   m_ObjectHideFlags: 0
