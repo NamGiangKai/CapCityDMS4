@@ -3600,7 +3600,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 688372822}
-  groundCheckRadius: 1
+  groundCheckRadius: 0.5
 --- !u!50 &1517221033
 Rigidbody2D:
   serializedVersion: 4
@@ -4207,8 +4207,8 @@ MonoBehaviour:
   SFXSource: {fileID: 912567728}
   background: {fileID: 8300000, guid: 1a3c43019d6e823458de23d30758a8fa, type: 3}
   death: {fileID: 8300000, guid: bacf1341f5fef3642b5a454865d4b9dc, type: 3}
-  checkpoint: {fileID: 0}
-  wallTouch: {fileID: 0}
+  run: {fileID: 8300000, guid: ef4cf25eb39564543a0aca843bde2e4d, type: 3}
+  jump: {fileID: 8300000, guid: 2318fdd1f029f644a8e55e8c253a1788, type: 3}
   musicPlaylist: []
 --- !u!4 &1634631290
 Transform:
