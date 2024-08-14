@@ -704,7 +704,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &248575383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,12 +718,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs:
-  - {fileID: 5236555981733824132, guid: 663006357581efc4d88fc265fac24d6b, type: 3}
-  - {fileID: 1469267587682586990, guid: 733dca0697e8c15489a2a6dc08353c95, type: 3}
-  - {fileID: 8346991889301122125, guid: 879a91ccf990e6a4ea28d0f926f957e3, type: 3}
-  - {fileID: 131988659586180972, guid: 3f929aa05e055204f87525ce107e1af6, type: 3}
-  - {fileID: 8952739796749537544, guid: e09d291c3d436044082f47056ba3b5fb, type: 3}
-  specialObstaclePrefab: {fileID: 0}
+  - {fileID: 6345482190745970134, guid: 724cb19b636f34940b5e4a2f9ee26ea9, type: 3}
+  specialObstaclePrefabs: []
   obstacleParent: {fileID: 233178570}
   obstacleSpawnTime: 3
   obstacleSpawnTimeFactor: 0.378
@@ -982,8 +978,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05dfb32093c5a346beb3fcf549c2003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossPrefab: {fileID: 8220281913598155044, guid: 12282537e52460e4191eadc361b5797b, type: 3}
-  bossSpawnPoint: {fileID: 1893603673}
+  bossPrefab: {fileID: 4084383501024931774, guid: 905ebb6b170f9bd46a35a8846a4f8bcc, type: 3}
+  bossSpawnPoint: {fileID: 5654179407536627666, guid: 905ebb6b170f9bd46a35a8846a4f8bcc, type: 3}
   bossDuration: 20
 --- !u!4 &289942745
 Transform:
@@ -2616,7 +2612,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.20919494}
+  m_Offset: {x: 0, y: -0.34585404}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2627,7 +2623,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.58161014}
+  m_Size: {x: 1, y: 0.3082919}
   m_EdgeRadius: 0
 --- !u!4 &1204221645
 Transform:
@@ -2638,7 +2634,7 @@ Transform:
   m_GameObject: {fileID: 1204221642}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.4032, y: -4.9493, z: 0.74}
+  m_LocalPosition: {x: 7.4032, y: -4.25, z: 0.74}
   m_LocalScale: {x: 52.71391, y: 2.2817948, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2710,6 +2706,7 @@ MonoBehaviour:
   backgrounds:
   - {fileID: 1204221642}
   fadeDuration: 0
+  scoreThreshold: 70
 --- !u!1 &1216074943
 GameObject:
   m_ObjectHideFlags: 0
@@ -3082,7 +3079,7 @@ Transform:
   m_GameObject: {fileID: 1317629247}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.03, y: -1.49, z: 4.729997}
+  m_LocalPosition: {x: 2.03, y: 0.59, z: 4.729997}
   m_LocalScale: {x: 36.07661, y: 13.35255, z: 0.0170069}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3282,7 +3279,14 @@ MonoBehaviour:
   - {fileID: 1469267587682586990, guid: 733dca0697e8c15489a2a6dc08353c95, type: 3}
   - {fileID: 8346991889301122125, guid: 879a91ccf990e6a4ea28d0f926f957e3, type: 3}
   - {fileID: 8952739796749537544, guid: e09d291c3d436044082f47056ba3b5fb, type: 3}
-  specialObstaclePrefab: {fileID: 131988659586180972, guid: 3f929aa05e055204f87525ce107e1af6, type: 3}
+  specialObstaclePrefabs:
+  - {fileID: 131988659586180972, guid: 3f929aa05e055204f87525ce107e1af6, type: 3}
+  - {fileID: 7315167496468313652, guid: aa58fa3b09d2d554ca22fba8b0786dd9, type: 3}
+  - {fileID: 512738384363023242, guid: 125b19b996994514f90e4583202ddfcc, type: 3}
+  - {fileID: 1512464461497025893, guid: 4b366489c948f6b4bbd6cbe784ae3e53, type: 3}
+  - {fileID: 4256013121445191947, guid: a7253f5772014cb4c8541af6ce482383, type: 3}
+  - {fileID: 5330359370591644018, guid: 27785f343a5bb8d438bee3d0eefee166, type: 3}
+  - {fileID: 6345482190745970134, guid: 724cb19b636f34940b5e4a2f9ee26ea9, type: 3}
   obstacleParent: {fileID: 233178570}
   obstacleSpawnTime: 3
   obstacleSpawnTimeFactor: 0.1
@@ -5274,6 +5278,7 @@ MonoBehaviour:
   - {fileID: 1317629247}
   - {fileID: 1969429800}
   fadeDuration: 1
+  scoreThreshold: 70
 --- !u!4 &1917274814
 Transform:
   m_ObjectHideFlags: 0
@@ -5440,7 +5445,7 @@ Transform:
   m_GameObject: {fileID: 1969429800}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.56, y: -1.41, z: 4.729997}
+  m_LocalPosition: {x: 2.56, y: 0.27, z: 4.729997}
   m_LocalScale: {x: 35.380024, y: 13.077479, z: 0.011750727}
   m_ConstrainProportionsScale: 0
   m_Children: []
