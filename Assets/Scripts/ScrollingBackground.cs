@@ -7,10 +7,12 @@ public class ScrollingBackground : MonoBehaviour
     public float speed; // Speed at which the background scrolls
     public GameObject[] backgrounds; // Array of background images
     public float fadeDuration = 1f; // Duration of the fade animation
+    public int scoreThreshold = 70; // Score required to change the background
 
     private int currentBackgroundIndex = 0;
     private Renderer bgRenderer;
     private bool isTransitioning = false;
+    private int lastThresholdScore = 0;
 
     void Start()
     {
@@ -31,7 +33,22 @@ public class ScrollingBackground : MonoBehaviour
         {
             bgRenderer.material.mainTextureOffset += new Vector2(speed * Time.deltaTime, 0);
         }
+
+        CheckScoreForBackgroundChange();
     }
+
+    private void CheckScoreForBackgroundChange()
+    {
+        int currentScore = Mathf.RoundToInt(GameManager.Instance.currentScore);  // Ensure currentScore is an integer
+
+        // Check if the player's score has reached the next multiple of the threshold
+        if (currentScore >= lastThresholdScore + scoreThreshold)
+        {
+            lastThresholdScore += scoreThreshold;  // Update the last threshold to avoid multiple triggers
+            TransitionToNextBackground();
+        }
+    }
+
 
     public void TransitionToNextBackground()
     {

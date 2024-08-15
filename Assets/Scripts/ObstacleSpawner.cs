@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] obstaclePrefabs;
-    [SerializeField] private GameObject specialObstaclePrefab;
+    [SerializeField] private GameObject[] obstaclePrefabs;               // Array for regular obstacles
+    [SerializeField] private GameObject[] specialObstaclePrefabs;        // Array for special obstacles
     [SerializeField] private Transform obstacleParent;
     public float obstacleSpawnTime = 3f;
     [Range(0, 1)] public float obstacleSpawnTimeFactor = 0.1f;
@@ -44,6 +44,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         obstaclePools = new Dictionary<GameObject, Queue<GameObject>>();
 
+        // Initialize pool for regular obstacles
         foreach (var prefab in obstaclePrefabs)
         {
             var pool = new Queue<GameObject>();
@@ -58,16 +59,20 @@ public class ObstacleSpawner : MonoBehaviour
             obstaclePools[prefab] = pool;
         }
 
-        // Initialize pool for special obstacle
-        var specialPool = new Queue<GameObject>();
-        for (int i = 0; i < initialPoolSize; i++)
+        // Initialize pool for special obstacles
+        foreach (var specialPrefab in specialObstaclePrefabs)
         {
-            GameObject obj = Instantiate(specialObstaclePrefab, obstacleParent);
-            obj.SetActive(false);
-            specialPool.Enqueue(obj);
-        }
+            var specialPool = new Queue<GameObject>();
 
-        obstaclePools[specialObstaclePrefab] = specialPool;
+            for (int i = 0; i < initialPoolSize; i++)
+            {
+                GameObject obj = Instantiate(specialPrefab, obstacleParent);
+                obj.SetActive(false);
+                specialPool.Enqueue(obj);
+            }
+
+            obstaclePools[specialPrefab] = specialPool;
+        }
     }
 
     private void SpawnLoop()
@@ -83,7 +88,19 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        GameObject obstacleToSpawn = spawnSpecialObstacle ? specialObstaclePrefab : obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+        GameObject obstacleToSpawn;
+
+        if (spawnSpecialObstacle)
+        {
+            // Randomly select a special obstacle from the array
+            obstacleToSpawn = specialObstaclePrefabs[Random.Range(0, specialObstaclePrefabs.Length)];
+        }
+        else
+        {
+            // Randomly select a regular obstacle from the array
+            obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+        }
+
         GameObject spawnedObstacle = GetPooledObject(obstacleToSpawn);
 
         if (spawnedObstacle != null)
@@ -141,7 +158,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         int score = Mathf.RoundToInt(GameManager.Instance.currentScore);
 
-        // Check if the score is a multiple of 10
+        // Check if the score is a multiple of 50
         if (score % 50 == 0 && score != 0)
         {
             if (!spawnSpecialObstacle)
