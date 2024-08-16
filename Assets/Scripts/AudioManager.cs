@@ -12,46 +12,61 @@ public class AudioManager : MonoBehaviour
     public AudioClip death;
     public AudioClip run;
     public AudioClip jump;
+    public AudioClip button1;
+    public AudioClip button2;
+    public AudioClip button3;
 
-    [Header("--------- Music Playlist ---------")]
-    public List<AudioClip> musicPlaylist = new List<AudioClip>();
-    private int currentTrackIndex = 0;
+    // [Header("--------- Music Playlist ---------")]
+    // public List<AudioClip> musicPlaylist = new List<AudioClip>();
+    // private int currentTrackIndex = 0;
+
+    // void Start()
+    // {
+    //     if (musicPlaylist.Count > 0)
+    //     {
+    //         PlayNextTrack();
+    //     }
+    // }
+
+    // void Update()
+    // {
+    //     if (!musicSource.isPlaying && musicPlaylist.Count > 0)
+    //     {
+    //         PlayNextTrack();
+    //     }
+
+    // }
+
+    // void PlayNextTrack()
+    // {
+    //     musicSource.clip = musicPlaylist[currentTrackIndex];
+    //     musicSource.Play();
+    //     currentTrackIndex = (currentTrackIndex + 1) % musicPlaylist.Count;
+    // }
+
+    // public void AddMusicTrack(AudioClip newTrack)
+    // {
+    //     musicPlaylist.Add(newTrack);
+    // }
+
+    // public void RemoveMusicTrack(AudioClip trackToRemove)
+    // {
+    //     if (musicPlaylist.Contains(trackToRemove))
+    //     {
+    //         musicPlaylist.Remove(trackToRemove);
+    //     }
+    // }
 
     void Start()
     {
-        if (musicPlaylist.Count > 0)
-        {
-            PlayNextTrack();
-        }
+        PlayBackgroundMusic();
     }
 
-    void Update()
+    public void PlayBackgroundMusic()
     {
-        if (!musicSource.isPlaying && musicPlaylist.Count > 0)
-        {
-            PlayNextTrack();
-        }
-
-    }
-
-    void PlayNextTrack()
-    {
-        musicSource.clip = musicPlaylist[currentTrackIndex];
+        musicSource.clip = background;
+        musicSource.loop = true;  // Enable looping
         musicSource.Play();
-        currentTrackIndex = (currentTrackIndex + 1) % musicPlaylist.Count;
-    }
-
-    public void AddMusicTrack(AudioClip newTrack)
-    {
-        musicPlaylist.Add(newTrack);
-    }
-
-    public void RemoveMusicTrack(AudioClip trackToRemove)
-    {
-        if (musicPlaylist.Contains(trackToRemove))
-        {
-            musicPlaylist.Remove(trackToRemove);
-        }
     }
 
     public void PlaySFX(AudioClip clip)
@@ -80,15 +95,15 @@ public class AudioManager : MonoBehaviour
     }
 
     // New Method to Play Jump Sound with adjustable speed (pitch)
-    public void PlayJumpSound(float pitch = 1f)
+    public void PlayJumpSound(float pitch=1f)
     {
         SFXSource.pitch = pitch;  // Adjust the pitch for the jump sound
         PlaySFX(jump);
         SFXSource.pitch = 1f;  // Reset pitch to default after playing the jump sound
-                               // Stop the running sound to ensure the jump sound plays
+        // //                        // Stop the running sound to ensure the jump sound plays
         StopRunSound();
 
-        // Adjust the pitch for the jump sound
+        // // Adjust the pitch for the jump sound
         SFXSource.pitch = pitch;
 
         // Play the jump sound
@@ -103,5 +118,20 @@ public class AudioManager : MonoBehaviour
     {
         StopRunSound();  // Stop the running sound when the character dies
         PlaySFX(death);
+    }
+
+    public void PlayButton1Sound()
+    {
+        PlaySFX(button1);
+    }
+
+    public void PlayButton2Sound()
+    {
+        PlaySFX(button2);
+    }
+
+    public void PlayButton3Sound()
+    {
+        PlaySFX(button3);
     }
 }

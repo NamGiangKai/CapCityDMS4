@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetTrigger("Jump");
 
         // Stop the running sound and play the jump sound
-        audioManager.PlayJumpSound(1.2f);
+        audioManager.PlayJumpSound();
 
         isRunningSoundPlaying = false; // Indicate that the running sound should stop
     }

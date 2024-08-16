@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
      [SerializeField] GameObject settingMenu;
      [SerializeField] GameObject userNameMenu;
+     [SerializeField] GameObject missionPopUpMenu;
     public void PlayGame()
     {
         SceneManager.LoadScene("PlayScene");
@@ -20,15 +21,22 @@ public class MainMenu : MonoBehaviour
     public void BackMainMenu()
     {
         settingMenu.SetActive(false);
+        missionPopUpMenu.SetActive(false);
     }
+
+    public void MissionPopUp()
+    {
+        missionPopUpMenu.SetActive(true);
+    }
+
 
     public void ShopScene()
     {
         SceneManager.LoadScene("ShopScene");
     }
 
-    public void SkinScene()
-    {
-        SceneManager.LoadScene("SkinScene");
-    }
+    // public void SkinScene()
+    // {
+    //     SceneManager.LoadScene("SkinScene");
+    // }
 }

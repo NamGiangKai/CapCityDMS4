@@ -87,34 +87,35 @@ public class ScrollingBackground : MonoBehaviour
     }
 
     private IEnumerator FadeOut(GameObject background, Renderer renderer, float duration)
+{
+    float timer = 0f;
+    Color color = renderer.material.color;
+
+    while (timer < duration)
     {
-        float timer = 0f;
-        Color color = renderer.material.color;
-
-        while (timer < duration)
-        {
-            float alpha = Mathf.Lerp(1f, 0f, timer / duration);
-            renderer.material.color = new Color(color.r, color.g, color.b, alpha);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        renderer.material.color = new Color(color.r, color.g, color.b, 0f);
+        float alpha = Mathf.SmoothStep(1f, 0f, timer / duration);
+        renderer.material.color = new Color(color.r, color.g, color.b, alpha);
+        timer += Time.deltaTime;
+        yield return null;
     }
 
-    private IEnumerator FadeIn(GameObject background, Renderer renderer, float duration)
+    renderer.material.color = new Color(color.r, color.g, color.b, 0f);
+}
+
+private IEnumerator FadeIn(GameObject background, Renderer renderer, float duration)
+{
+    float timer = 0f;
+    Color color = renderer.material.color;
+
+    while (timer < duration)
     {
-        float timer = 0f;
-        Color color = renderer.material.color;
-
-        while (timer < duration)
-        {
-            float alpha = Mathf.Lerp(0f, 1f, timer / duration);
-            renderer.material.color = new Color(color.r, color.g, color.b, alpha);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        renderer.material.color = new Color(color.r, color.g, color.b, 1f);
+        float alpha = Mathf.SmoothStep(0f, 1f, timer / duration);
+        renderer.material.color = new Color(color.r, color.g, color.b, alpha);
+        timer += Time.deltaTime;
+        yield return null;
     }
+
+    renderer.material.color = new Color(color.r, color.g, color.b, 1f);
+}
+
 }

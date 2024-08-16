@@ -9,18 +9,31 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreUI;
     [SerializeField] private GameObject startMenuUI;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject gameOverADUI;
     [SerializeField] private TextMeshProUGUI gameOverScoreUI;
     [SerializeField] private TextMeshProUGUI gameOverHighscoreUI;
     GameManager gm;
+
     private void Start()
     {
         gm = GameManager.Instance;
-        gm.onGameOver.AddListener(ActivateGameOverUI);
+        gm.onGameOver.AddListener(ActivateGameOverADUI);
     }
+
     public void PlayButtonHandler()
     {
         gm.StartGame();
-        
+    }
+
+    public void ActivateGameOverADUI()
+    {
+        gameOverADUI.SetActive(true);
+    }
+
+    public void CloseAdButtonHandler()
+    {
+        gameOverADUI.SetActive(false);
+        ActivateGameOverUI();
     }
 
     public void ActivateGameOverUI()
@@ -30,9 +43,7 @@ public class UIManager : MonoBehaviour
         gameOverHighscoreUI.text = "Highscore: " + gm.PrettyHighscore();
     }
 
-
-
-     private void OnGUI()
+    private void OnGUI()
     {
         scoreUI.text = gm.PrettyScore();
     }
@@ -42,6 +53,3 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 }
-
-
-
