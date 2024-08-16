@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isGrounded", isGrounded);
 
         // Play or stop the run sound based on whether the character is running on the ground
-        if (isGrounded && rb.velocity.x <= 1)
+        if (isGrounded && Mathf.Abs(rb.velocity.x) > 0.1f)
         {
             if (!isRunningSoundPlaying)
             {
@@ -57,18 +57,27 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
+        // Apply vertical force to make the character jump
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+        // Trigger the jump animation
         animator.SetTrigger("Jump");
 
-        // Stop the running sound and play the jump sound
-        audioManager.PlayJumpSound();
+        // Stop the running sound if it's playing
+        if (isRunningSoundPlaying)
+        {
+            audioManager.StopRunSound();
+            isRunningSoundPlaying = false;
+        }
 
-        isRunningSoundPlaying = false; // Indicate that the running sound should stop
+        // Play the jump sound
+        audioManager.PlayJumpSound(); // Ensure the AudioManager has the jump sound correctly assigned
     }
 
     public void Die()
     {
-        audioManager.PlayDeathSound(); // Play the death sound and stop the run sound
+        // Play the death sound and stop the run sound
+        audioManager.PlayDeathSound();
         // Handle the rest of the death logic here...
     }
 

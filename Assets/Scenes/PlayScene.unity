@@ -4499,9 +4499,9 @@ MonoBehaviour:
   musicSource: {fileID: 1900534400}
   SFXSource: {fileID: 912567728}
   background: {fileID: 8300000, guid: cabdb900e358b7f41b6d9885727c3d23, type: 3}
-  death: {fileID: 0}
+  death: {fileID: 8300000, guid: bacf1341f5fef3642b5a454865d4b9dc, type: 3}
   run: {fileID: 0}
-  jump: {fileID: 0}
+  jump: {fileID: 8300000, guid: 2318fdd1f029f644a8e55e8c253a1788, type: 3}
   button1: {fileID: 8300000, guid: 78a704b522ab0e047a5919dd90a148f4, type: 3}
   button2: {fileID: 8300000, guid: 31615b54c7c750d46bc5e32749104d8b, type: 3}
   button3: {fileID: 8300000, guid: 31615b54c7c750d46bc5e32749104d8b, type: 3}

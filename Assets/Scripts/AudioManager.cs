@@ -95,7 +95,7 @@ public class AudioManager : MonoBehaviour
     }
 
     // New Method to Play Jump Sound with adjustable speed (pitch)
-    public void PlayJumpSound(float pitch=1f)
+    public void PlayJumpSound(float pitch=1)
     {
         SFXSource.pitch = pitch;  // Adjust the pitch for the jump sound
         PlaySFX(jump);
