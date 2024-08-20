@@ -12,15 +12,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverADUI;
     [SerializeField] private TextMeshProUGUI gameOverScoreUI;
     [SerializeField] private TextMeshProUGUI gameOverHighscoreUI;
-    [SerializeField] private AudioSource backgroundMusic;
-    [SerializeField] private AudioSource soundEffects;
+
     GameManager gm;
 
     private void Start()
     {
         gm = GameManager.Instance;
         gm.onGameOver.AddListener(ActivateGameOverADUI);
-        UpdateMuteButtons();
     }
 
     public void PlayButtonHandler()
@@ -56,55 +54,5 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-public void MusicMuteButtonHandler()
-    {
-        musicSource.mute = true;
-        UpdateMusicMuteButtons();
-    }
 
-    public void MusicUnmuteButtonHandler()
-    {
-        musicSource.mute = false;
-        UpdateMusicMuteButtons();
-    }
-
-    public void SFXMuteButtonHandler()
-    {
-        SFXSource.mute = true;
-        UpdateSFXMuteButtons();
-    }
-
-    public void SFXUnmuteButtonHandler()
-    {
-        SFXSource.mute = false;
-        UpdateMuteButtons();
-    }
-
-    private void UpdateMusicMuteButtons()
-    {
-        if (musicSource.mute)
-        {
-            muteButtonUI.SetActive(false);
-            unmuteButtonUI.SetActive(true);
-        }
-        else
-        {
-            muteButtonUI.SetActive(true);
-            unmuteButtonUI.SetActive(false);
-        }
-    }
-
-    private void UpdateSFXMuteButtons()
-    {
-        if (musicSource.mute)
-        {
-            muteButtonUI.SetActive(false);
-            unmuteButtonUI.SetActive(true);
-        }
-        else
-        {
-            muteButtonUI.SetActive(true);
-            unmuteButtonUI.SetActive(false);
-        }
-    }
 }

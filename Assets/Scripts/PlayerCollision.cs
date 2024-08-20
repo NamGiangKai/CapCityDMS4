@@ -5,11 +5,13 @@ public class PlayerCollision : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody2D rb;
-    private bool isDead = false;
+    public bool isDead = false;
     private AudioManager audioManager;
 
     // Start position of the player
     public Vector2 startPosition = new Vector2(0, 0);
+
+    public ScrollingBackground scrollingBackground;
 
     private void Start()
     {
@@ -66,7 +68,7 @@ public class PlayerCollision : MonoBehaviour
 
     private IEnumerator GameOverAfterDelay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0f);
         GameManager.Instance.GameOver();
     }
 

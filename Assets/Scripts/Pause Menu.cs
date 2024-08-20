@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // Include this namespace for scene management
+using UnityEngine.SceneManagement; 
 
 public class PauseMenu : MonoBehaviour
 {
@@ -48,6 +48,3 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
     }
 }
-
-    
-

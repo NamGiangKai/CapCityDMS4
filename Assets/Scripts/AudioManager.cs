@@ -4,8 +4,8 @@ using System.Collections.Generic;
 public class AudioManager : MonoBehaviour
 {
     [Header("--------- Audio Source ---------")]
-    [SerializeField] public AudioSource musicSource;
-    [SerializeField] public AudioSource SFXSource;
+    [SerializeField] AudioSource musicSource;
+    [SerializeField] AudioSource SFXSource;
 
 
     [Header("--------- Audio Clip ---------")]
@@ -64,7 +64,6 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         PlayBackgroundMusic();
-        soundOnImage = button.image.sprite;
     }
 
     public void PlayBackgroundMusic()
@@ -139,11 +138,6 @@ public class AudioManager : MonoBehaviour
     {
         PlaySFX(button3);
     }
-
-
-
-
-
 
 }
 
