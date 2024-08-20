@@ -3120,7 +3120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa182b0a8cab39f4ea5a6553d90c306a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.15
   backgrounds:
   - {fileID: 1362233238}
   fadeDuration: 0

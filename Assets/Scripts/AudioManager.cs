@@ -4,8 +4,9 @@ using System.Collections.Generic;
 public class AudioManager : MonoBehaviour
 {
     [Header("--------- Audio Source ---------")]
-    [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFXSource;
+    [SerializeField] public AudioSource musicSource;
+    [SerializeField] public AudioSource SFXSource;
+
 
     [Header("--------- Audio Clip ---------")]
     public AudioClip background;
@@ -15,6 +16,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip button1;
     public AudioClip button2;
     public AudioClip button3;
+
+
+
 
     // [Header("--------- Music Playlist ---------")]
     // public List<AudioClip> musicPlaylist = new List<AudioClip>();
@@ -60,6 +64,7 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         PlayBackgroundMusic();
+        soundOnImage = button.image.sprite;
     }
 
     public void PlayBackgroundMusic()
@@ -134,4 +139,15 @@ public class AudioManager : MonoBehaviour
     {
         PlaySFX(button3);
     }
+
+
+
+
+
+
 }
+
+
+    
+
+
