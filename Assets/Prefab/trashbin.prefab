@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 4976127946464920177}
   - component: {fileID: 8357103406836899398}
   - component: {fileID: 3654179056064765570}
+  - component: {fileID: 6402779736705791518}
   m_Layer: 8
   m_Name: IMG_2244
   m_TagString: Untagged
@@ -190,3 +191,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.06629, y: 5.802676}
   m_EdgeRadius: 0
+--- !u!114 &6402779736705791518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5729204556551145379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -10.800001, y: -8.100002, z: 0}
+  - {x: -10.800001, y: 8.1, z: 0}
+  - {x: 10.799999, y: 8.1, z: 0}
+  - {x: 10.799999, y: -8.100002, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -101056
+  m_LocalBounds:
+    m_Center: {x: -0.0000009536743, y: -0.0000009536743, z: 0}
+    m_Extent: {x: 10.8, y: 8.100001, z: 0}

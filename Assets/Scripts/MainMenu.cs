@@ -35,8 +35,8 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("ShopScene");
     }
 
-    // public void SkinScene()
-    // {
-    //     SceneManager.LoadScene("SkinScene");
-    // }
+    public void SkinScene()
+    {
+        SceneManager.LoadScene("SkinScene");
+    }
 }
