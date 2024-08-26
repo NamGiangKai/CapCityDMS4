@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6262044404158315978}
   - component: {fileID: 7351112280316017020}
   - component: {fileID: 2320882295501454727}
+  - component: {fileID: 4881355837853788467}
   m_Layer: 8
   m_Name: IMG_2242
   m_TagString: Untagged
@@ -348,6 +349,36 @@ PolygonCollider2D:
       - {x: 2.6683595, y: -4.398047}
       - {x: 2.7527344, y: -4.398047}
   m_UseDelaunayMesh: 0
+--- !u!114 &4881355837853788467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065442824515301782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -10.799999, y: -8.099998, z: 0}
+  - {x: -10.799999, y: 8.1, z: 0}
+  - {x: 10.799999, y: 8.1, z: 0}
+  - {x: 10.799999, y: -8.099998, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -99908
+  m_LocalBounds:
+    m_Center: {x: 0, y: 0.0000009536743, z: 0}
+    m_Extent: {x: 10.799999, y: 8.099999, z: 0}
 --- !u!1 &8346991889301122125
 GameObject:
   m_ObjectHideFlags: 0

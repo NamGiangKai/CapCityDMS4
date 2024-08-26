@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 73363729541678197}
   - component: {fileID: 5229290413849501769}
   - component: {fileID: 5540876136507296248}
+  - component: {fileID: 7750247475761149565}
   m_Layer: 8
   m_Name: nylon
   m_TagString: Untagged
@@ -53,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,6 +131,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.96641433, y: 0.97058487}
   m_EdgeRadius: 0
+--- !u!114 &7750247475761149565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7020823836798538253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -3.46, y: -3.0950003, z: 0}
+  - {x: -3.46, y: 3.0950003, z: 0}
+  - {x: 3.46, y: 3.0950003, z: 0}
+  - {x: 3.46, y: -3.0950003, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -100242
+  m_LocalBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 3.46, y: 3.0950003, z: 0}
 --- !u!1 &7315167496468313652
 GameObject:
   m_ObjectHideFlags: 0
