@@ -6,4 +6,5 @@ using UnityEngine;
 public class Data 
 {
     public float highscore;
+    public List<int> coinHistory = new List<int>(); // Stores the coins collected in each  
 }

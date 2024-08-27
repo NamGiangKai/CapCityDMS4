@@ -79,4 +79,6 @@ public class PlayerCollision : MonoBehaviour
         animator.SetBool("IsAlive", true);
         isDead = false;
     }
+
 }
+

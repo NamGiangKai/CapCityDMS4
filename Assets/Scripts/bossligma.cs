@@ -6,7 +6,7 @@ public class BossSpawner : MonoBehaviour
     public GameObject bossPrefab;  
     public Transform bossSpawnPoint;  
     private GameObject spawnedBoss;  
-    public float bossDuration = 20f;  // thời gian của boss
+    public float bossDuration = 10f;  // thời gian của boss
     private bool isBossActive = false;  
 
     void Update()

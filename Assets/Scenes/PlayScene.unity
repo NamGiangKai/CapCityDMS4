@@ -519,6 +519,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &235547374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 235547376}
+  - component: {fileID: 235547375}
+  m_Layer: 0
+  m_Name: Spawner2
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &235547375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235547374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c686f1972d915d4e8145ec4b05d075a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefabs:
+  - {fileID: 1469267587682586990, guid: 733dca0697e8c15489a2a6dc08353c95, type: 3}
+  - {fileID: 5236555981733824132, guid: 663006357581efc4d88fc265fac24d6b, type: 3}
+  specialObstaclePrefabs: []
+  obstacleParent: {fileID: 233178570}
+  obstacleSpawnTime: 6
+  obstacleSpawnTimeFactor: 0.378
+  obstacleSpeed: 9
+  obstacleSpeedFactor: 0.109
+  initialPoolSize: 10
+--- !u!4 &235547376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235547374}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.64, y: -1.92, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &248575382
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +584,7 @@ GameObject:
   - component: {fileID: 248575384}
   - component: {fileID: 248575383}
   m_Layer: 0
-  m_Name: Spawner (1)
+  m_Name: CoinSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -552,7 +606,7 @@ MonoBehaviour:
   - {fileID: 3996720296463958952, guid: cc886602595b8674aae3c31b711d3f50, type: 3}
   specialObstaclePrefabs: []
   obstacleParent: {fileID: 233178570}
-  obstacleSpawnTime: 3
+  obstacleSpawnTime: 2
   obstacleSpawnTimeFactor: 0.378
   obstacleSpeed: 9
   obstacleSpeedFactor: 0.109
@@ -2248,6 +2302,7 @@ MonoBehaviour:
   gameOverADUI: {fileID: 0}
   gameOverScoreUI: {fileID: 0}
   gameOverHighscoreUI: {fileID: 0}
+  coinText: {fileID: 0}
 --- !u!1 &1119991792
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,6 +2754,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250298305}
   m_CullTransparentMesh: 1
+--- !u!1 &1256870378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1256870380}
+  - component: {fileID: 1256870379}
+  m_Layer: 0
+  m_Name: Spawner3
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1256870379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256870378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c686f1972d915d4e8145ec4b05d075a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefabs: []
+  specialObstaclePrefabs:
+  - {fileID: 6345482190745970134, guid: 724cb19b636f34940b5e4a2f9ee26ea9, type: 3}
+  - {fileID: 4256013121445191947, guid: a7253f5772014cb4c8541af6ce482383, type: 3}
+  obstacleParent: {fileID: 233178570}
+  obstacleSpawnTime: 2
+  obstacleSpawnTimeFactor: 0.378
+  obstacleSpeed: 9
+  obstacleSpeedFactor: 0.109
+  initialPoolSize: 481
+--- !u!4 &1256870380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256870378}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.75, y: -2.4, z: 0.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1317629247
 GameObject:
   m_ObjectHideFlags: 0
@@ -3114,14 +3223,7 @@ MonoBehaviour:
   obstaclePrefabs:
   - {fileID: 8346991889301122125, guid: 879a91ccf990e6a4ea28d0f926f957e3, type: 3}
   - {fileID: 8952739796749537544, guid: e09d291c3d436044082f47056ba3b5fb, type: 3}
-  specialObstaclePrefabs:
-  - {fileID: 131988659586180972, guid: 3f929aa05e055204f87525ce107e1af6, type: 3}
-  - {fileID: 7315167496468313652, guid: aa58fa3b09d2d554ca22fba8b0786dd9, type: 3}
-  - {fileID: 512738384363023242, guid: 125b19b996994514f90e4583202ddfcc, type: 3}
-  - {fileID: 1512464461497025893, guid: 4b366489c948f6b4bbd6cbe784ae3e53, type: 3}
-  - {fileID: 4256013121445191947, guid: a7253f5772014cb4c8541af6ce482383, type: 3}
-  - {fileID: 5330359370591644018, guid: 27785f343a5bb8d438bee3d0eefee166, type: 3}
-  - {fileID: 6345482190745970134, guid: 724cb19b636f34940b5e4a2f9ee26ea9, type: 3}
+  specialObstaclePrefabs: []
   obstacleParent: {fileID: 233178570}
   obstacleSpawnTime: 3
   obstacleSpawnTimeFactor: 0.1
@@ -3270,6 +3372,7 @@ MonoBehaviour:
   gameOverADUI: {fileID: 1510350835}
   gameOverScoreUI: {fileID: 116700253}
   gameOverHighscoreUI: {fileID: 1875832316}
+  coinText: {fileID: 0}
 --- !u!114 &1476834859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4413,6 +4516,7 @@ MonoBehaviour:
   currentScore: 0
   data:
     highscore: 0
+    coinHistory: 
   scrollingBackground: {fileID: 1917274813}
   isPlaying: 0
   onPlay:
@@ -5290,6 +5394,8 @@ SceneRoots:
   - {fileID: 1517221034}
   - {fileID: 1472692394}
   - {fileID: 248575384}
+  - {fileID: 235547376}
+  - {fileID: 1256870380}
   - {fileID: 1476834857}
   - {fileID: 2144200132}
   - {fileID: 233178570}

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public static class SaveSystem
 {
-
     public static readonly string SAVE_FOLDER = Application.persistentDataPath + "/saves/";
     public static readonly string FILE_EXT = ".json";
 
@@ -23,7 +22,6 @@ public static class SaveSystem
         if (File.Exists(fileLoc))
         {
             string loadedData = File.ReadAllText(fileLoc);
-
             return loadedData;
         }
         else
