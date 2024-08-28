@@ -14,16 +14,38 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameOverHighscoreUI;
 
     GameManager gm;
-
+    public TMP_Text coinText; // Assign this in the Inspector
+    private CoinSaveSystem saveSystem;
     private void Start()
     {
+
         gm = GameManager.Instance;
         gm.onGameOver.AddListener(ActivateGameOverADUI);
+        saveSystem = FindObjectOfType<CoinSaveSystem>();
+        ShowPlayerCoins();
+
     }
+
+
+
+    void ShowPlayerCoins()
+    {
+        Data playthroughData = saveSystem.GetData();
+        coinText.text = "Playthrough Coin History:\n";
+        for (int i = 0; i < playthroughData.coinHistory.Count; i++)
+        {
+            coinText.text += $"Playthrough {i + 1}: {playthroughData.coinHistory[i]} coins\n";
+        }
+    }
+
+
+
+
 
     public void PlayButtonHandler()
     {
         gm.StartGame();
+      
     }
 
     public void ActivateGameOverADUI()
@@ -53,6 +75,11 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+    
+     }
+    
+  
+  
 
 
-}
+
