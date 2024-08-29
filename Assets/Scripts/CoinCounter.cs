@@ -16,7 +16,6 @@ public class CoinCounter : MonoBehaviour
         LoadCoins();  // Load the saved coin value when the game starts
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         coinText.text = "COINS: " + currentCoins.ToString();
@@ -27,6 +26,9 @@ public class CoinCounter : MonoBehaviour
         currentCoins += v;
         coinText.text = "COINS: " + currentCoins.ToString();
         SaveCoins();  // Save the updated coin value whenever it changes
+
+        // Notify the MissionManager about the coin collection (if applicable)
+        MissionManager.instance?.UpdateMissionProgress("Collect", v);
     }
 
     public void ResetCoins()

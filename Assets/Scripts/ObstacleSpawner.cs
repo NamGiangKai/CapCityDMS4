@@ -24,7 +24,7 @@ public class ObstacleSpawner : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.onGameOver.AddListener(ClearObstacles);
-        GameManager.Instance.onPlay.AddListener(ResetFactors);
+        GameManager.Instance.onPlay.AddListener(ResetSpawner);
 
         InitializePools();
     }
@@ -124,7 +124,6 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
-
     private GameObject GetPooledObject(GameObject prefab)
     {
         if (obstaclePools.ContainsKey(prefab))
@@ -159,18 +158,25 @@ public class ObstacleSpawner : MonoBehaviour
         _obstacleSpeed = obstacleSpeed * Mathf.Pow(timeAlive, obstacleSpeedFactor);
     }
 
-    private void ResetFactors()
+    private void ResetSpawner()
     {
+        // Reset the time alive and factors
         timeAlive = 1f;
         _obstacleSpawnTime = obstacleSpawnTime;
         _obstacleSpeed = obstacleSpeed;
+
+        // Reset the special obstacle flag
+        spawnSpecialObstacle = false;
+
+        // Ensure all obstacles are cleared
+        ClearObstacles();
     }
 
     public void CheckScore()
     {
         int score = Mathf.RoundToInt(GameManager.Instance.currentScore);
 
-        // Check if the score is a multiple of 50
+        // Check if the score is a multiple of 20
         if (score % 20 == 0 && score != 0)
         {
             if (!spawnSpecialObstacle)

@@ -13,23 +13,51 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameOverScoreUI;
     [SerializeField] private TextMeshProUGUI gameOverHighscoreUI;
 
-    GameManager gm;
+    private GameManager gm;
     public TMP_Text coinText; // Assign this in the Inspector
     private CoinSaveSystem saveSystem;
+
     private void Start()
     {
-
         gm = GameManager.Instance;
+
+        if (gm == null)
+        {
+            Debug.LogError("GameManager instance is not found. Make sure there is a GameManager in the scene.");
+            return;
+        }
+
         gm.onGameOver.AddListener(ActivateGameOverADUI);
         saveSystem = FindObjectOfType<CoinSaveSystem>();
-        ShowPlayerCoins();
 
+        if (saveSystem == null)
+        {
+            Debug.LogError("CoinSaveSystem instance is not found. Make sure there is a CoinSaveSystem in the scene.");
+            return;
+        }
+
+        ShowPlayerCoins();
     }
 
+    private void OnGUI()
+    {
+        if (scoreUI == null || gm == null)
+        {
+            Debug.LogError("UIManager: scoreUI or GameManager instance is not assigned.");
+            return;
+        }
 
+        scoreUI.text = gm.PrettyScore();
+    }
 
     void ShowPlayerCoins()
     {
+        if (saveSystem == null)
+        {
+            Debug.LogError("SaveSystem is not assigned.");
+            return;
+        }
+
         Data playthroughData = saveSystem.GetData();
         coinText.text = "Playthrough Coin History:\n";
         for (int i = 0; i < playthroughData.coinHistory.Count; i++)
@@ -38,48 +66,55 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
-
-
-
     public void PlayButtonHandler()
     {
+        if (gm == null)
+        {
+            Debug.LogError("GameManager instance is not assigned.");
+            return;
+        }
+
         gm.StartGame();
-      
     }
 
     public void ActivateGameOverADUI()
     {
+        if (gameOverADUI == null)
+        {
+            Debug.LogError("GameOverADUI is not assigned.");
+            return;
+        }
+
         gameOverADUI.SetActive(true);
     }
 
     public void CloseAdButtonHandler()
     {
+        if (gameOverADUI == null || gameOverUI == null)
+        {
+            Debug.LogError("GameOverADUI or GameOverUI is not assigned.");
+            return;
+        }
+
         gameOverADUI.SetActive(false);
         ActivateGameOverUI();
     }
 
     public void ActivateGameOverUI()
     {
+        if (gameOverUI == null || gameOverScoreUI == null || gameOverHighscoreUI == null)
+        {
+            Debug.LogError("GameOverUI, GameOverScoreUI, or GameOverHighscoreUI is not assigned.");
+            return;
+        }
+
         gameOverUI.SetActive(true);
         gameOverScoreUI.text = "Score: " + gm.PrettyScore();
         gameOverHighscoreUI.text = "Highscore: " + gm.PrettyHighscore();
-    }
-
-    private void OnGUI()
-    {
-        scoreUI.text = gm.PrettyScore();
     }
 
     public void BackToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
-    
-     }
-    
-  
-  
-
-
-
+}
