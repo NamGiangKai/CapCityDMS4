@@ -549,13 +549,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs:
-  - {fileID: 1469267587682586990, guid: 733dca0697e8c15489a2a6dc08353c95, type: 3}
-  - {fileID: 5236555981733824132, guid: 663006357581efc4d88fc265fac24d6b, type: 3}
+  - {fileID: 1439622118349656651, guid: 84f215008619a7d41a8cec6e641782b6, type: 3}
+  - {fileID: 7213666626710598004, guid: bd49b123171ebfb4b94a4382d7cc8d14, type: 3}
   specialObstaclePrefabs: []
   obstacleParent: {fileID: 233178570}
-  obstacleSpawnTime: 6
+  obstacleSpawnTime: 14
   obstacleSpawnTimeFactor: 0.378
-  obstacleSpeed: 9
+  obstacleSpeed: 12
   obstacleSpeedFactor: 0.109
   initialPoolSize: 10
 --- !u!4 &235547376
@@ -567,7 +567,7 @@ Transform:
   m_GameObject: {fileID: 235547374}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.64, y: -1.92, z: 0}
+  m_LocalPosition: {x: 38.07, y: -1.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2907,7 +2907,7 @@ MonoBehaviour:
   - {fileID: 6345482190745970134, guid: 724cb19b636f34940b5e4a2f9ee26ea9, type: 3}
   - {fileID: 4256013121445191947, guid: a7253f5772014cb4c8541af6ce482383, type: 3}
   obstacleParent: {fileID: 233178570}
-  obstacleSpawnTime: 2
+  obstacleSpawnTime: 3
   obstacleSpawnTimeFactor: 0.378
   obstacleSpeed: 9
   obstacleSpeedFactor: 0.109
@@ -2921,7 +2921,7 @@ Transform:
   m_GameObject: {fileID: 1256870378}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.95, y: -2.4, z: 0.26}
+  m_LocalPosition: {x: 10.15, y: -2.4, z: 0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3361,7 +3361,7 @@ Transform:
   m_GameObject: {fileID: 1472692392}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.32, y: -4.44, z: 0}
+  m_LocalPosition: {x: 13.75, y: -4.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3838,7 +3838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681e4ef3c4bf6994a94f48b6a98d391c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 40
+  jumpForce: 41
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
