@@ -5,23 +5,48 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public int value;
+    private Animator animator;
+    private bool isCollected = false; // To prevent multiple triggers
 
     // Start is called before the first frame update
     void Start()
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        animator = GetComponent<Animator>(); // Get the Animator component attached to the coin
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isCollected)
         {
-            Destroy(gameObject);
+            isCollected = true; // Set the flag to prevent multiple triggers
             CoinCounter.instance.IncreaseCoins(value);
+            PlayDisappearAnimation(); // Play the coin disappear animation
         }
+    }
+
+    void PlayDisappearAnimation()
+    {
+        if (animator != null)
+        {
+            Debug.Log("Triggering Disappear animation");
+            animator.SetTrigger("Disappear"); // Trigger the disappear animation
+
+            // Wait for the animation to complete before destroying the coin
+            StartCoroutine(DestroyAfterAnimation());
+        }
+        else
+        {
+            Debug.LogWarning("Animator not found!");
+            Destroy(gameObject); // If no animator is found, destroy immediately
+        }
+    }
+
+
+    private IEnumerator DestroyAfterAnimation()
+    {
+        // Wait until the animation completes (assuming the animation length is 1 second)
+        yield return new WaitForSeconds(1f);
+
+        Destroy(gameObject); // Destroy the coin after the animation completes
     }
 }

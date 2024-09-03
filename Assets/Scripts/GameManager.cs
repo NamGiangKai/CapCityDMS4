@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent onGameOver = new UnityEvent();
     public UnityEvent onMainMenu = new UnityEvent(); // Event for returning to the main menu
     public UnityEvent<float> onScoreUpdated = new UnityEvent<float>(); // Score update event
+    public UnityEvent onPlayerDie = new UnityEvent(); // Event triggered when the player dies
 
     private void Start()
     {
@@ -61,20 +62,20 @@ public class GameManager : MonoBehaviour
         {
             data = new Data();
         }
+
+        // Initialize MissionManager if not already in the scene
+        if (MissionManager.instance == null)
+        {
+            GameObject missionManagerObject = new GameObject("MissionManager");
+            missionManagerObject.AddComponent<MissionManager>();
+        }
     }
 
     private void Update()
     {
         if (isPlaying)
         {
-            currentScore += Time.deltaTime;
-            onScoreUpdated.Invoke(currentScore); // Notify listeners of the score update
-
-            // Trigger background transition based on the score
-            if (Mathf.FloorToInt(currentScore) > 0 && Mathf.FloorToInt(currentScore) % 70 == 0)
-            {
-                scrollingBackground.TransitionToNextBackground();
-            }
+            // Handle any real-time game updates here if needed
         }
     }
 
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
     {
         onPlay.Invoke();
         isPlaying = true;
-        currentScore = 0;
+        currentScore = 0; // Reset the score for this session
     }
 
     public void GameOver()
@@ -95,14 +96,17 @@ public class GameManager : MonoBehaviour
         }
 
         isPlaying = false;
+        MissionManager.instance.CheckMissions(); // Check missions upon game over
         onGameOver.Invoke();
     }
 
     public void ReturnToMainMenu()
     {
         isPlaying = false;
+        MissionManager.instance.CheckMissions(); // Check missions before returning to the main menu
         onMainMenu.Invoke();
         // Additional logic to handle transitioning to the main menu, such as resetting the game state
+        SceneManager.LoadScene("MainMenu"); // Make sure to load the main menu scene
     }
 
     public string PrettyScore()
@@ -113,5 +117,33 @@ public class GameManager : MonoBehaviour
     public string PrettyHighscore()
     {
         return Mathf.RoundToInt(data.highscore).ToString();
+    }
+
+    public void PlayerJumpedOverObstacle()
+    {
+        currentScore += 1;
+        onScoreUpdated.Invoke(currentScore); // Notify listeners of the score update
+
+        // Update mission progress
+        MissionManager.instance.UpdateMissionProgress("Score", 1);
+
+        // Trigger background transition based on the score
+        if (Mathf.FloorToInt(currentScore) % 10 == 0)
+        {
+            scrollingBackground.TransitionToNextBackground();
+        }
+    }
+
+    public void CollectCoin(int coins)
+    {
+        MissionManager.instance.UpdateMissionProgress("Collect", coins);
+    }
+
+    public void PlayerDied()
+    {
+        onPlayerDie.Invoke(); // Trigger the onPlayerDie event
+
+        // Handle any additional game over logic here
+        GameOver();
     }
 }
