@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
     {
         onPlay.Invoke();
         isPlaying = true;
+        Time.timeScale = 1; // Ensure the game is running
         currentScore = 0; // Reset the score for this session
     }
 
@@ -96,6 +97,7 @@ public class GameManager : MonoBehaviour
         }
 
         isPlaying = false;
+        Time.timeScale = 0; // Pause the game
         MissionManager.instance.CheckMissions(); // Check missions upon game over
         onGameOver.Invoke();
     }
@@ -145,5 +147,15 @@ public class GameManager : MonoBehaviour
 
         // Handle any additional game over logic here
         GameOver();
+    }
+
+    // New method to resume the game after closing the ad
+    public void ResumeGame()
+    {
+        if (isPlaying) return; // If already playing, no need to resume
+
+        isPlaying = true; // Set the game state to playing
+        Time.timeScale = 1; // Resume game time
+        // Additional logic to resume the game if needed (e.g., enabling controls, animations, etc.)
     }
 }

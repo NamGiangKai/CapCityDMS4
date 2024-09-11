@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject startMenuUI;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject gameOverADUI;
+    [SerializeField] private GameObject adVideoUI; // New GameObject for ad video UI
+    [SerializeField] private GameObject adCloseButton; // New GameObject for close button
     [SerializeField] private TextMeshProUGUI gameOverScoreUI;
     [SerializeField] private TextMeshProUGUI gameOverHighscoreUI;
 
@@ -88,16 +90,32 @@ public class UIManager : MonoBehaviour
         gameOverADUI.SetActive(true);
     }
 
-    public void CloseAdButtonHandler()
+    // New method to show ad video and close button
+    public void ShowAdVideo()
     {
-        if (gameOverADUI == null || gameOverUI == null)
+        if (adVideoUI == null || adCloseButton == null)
         {
-            Debug.LogError("GameOverADUI or GameOverUI is not assigned.");
+            Debug.LogError("Ad video UI or close button is not assigned.");
             return;
         }
 
-        gameOverADUI.SetActive(false);
-        ActivateGameOverUI();
+        adVideoUI.SetActive(true); // Show ad video UI
+        adCloseButton.SetActive(true); // Show close button
+    }
+
+    // Method to handle closing the ad video
+    public void CloseAdButtonHandler()
+    {
+        if (adVideoUI == null || adCloseButton == null)
+        {
+            Debug.LogError("Ad video UI or close button is not assigned.");
+            return;
+        }
+
+        adVideoUI.SetActive(false); // Hide ad video UI
+        adCloseButton.SetActive(false); // Hide close button
+        gameOverADUI.SetActive(false); // Hide game over ad UI
+        gm.ResumeGame(); // Resume the game without triggering game over
     }
 
     public void ActivateGameOverUI()
@@ -105,7 +123,7 @@ public class UIManager : MonoBehaviour
         if (gameOverUI == null || gameOverScoreUI == null || gameOverHighscoreUI == null)
         {
             Debug.LogError("GameOverUI, GameOverScoreUI, or GameOverHighscoreUI is not assigned.");
-            return;
+            return; 
         }
 
         gameOverUI.SetActive(true);
