@@ -158,4 +158,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1; // Resume game time
         // Additional logic to resume the game if needed (e.g., enabling controls, animations, etc.)
     }
+    public void RestartGame()
+    {
+        // Reset any necessary game variables here
+        // e.g., reset score, position, obstacles, etc.
+
+        // Restart the game logic
+        StartGame();
+    }
 }
