@@ -115,7 +115,14 @@ public class UIManager : MonoBehaviour
         adVideoUI.SetActive(false); // Hide ad video UI
         adCloseButton.SetActive(false); // Hide close button
         gameOverADUI.SetActive(false); // Hide game over ad UI
-        gm.ResumeGame(); // Resume the game without triggering game over
+        // if (gm == null)
+        // {
+        //     Debug.LogError("GameManager instance is not assigned.");
+        //     return;
+        // }
+
+        // gm.StartGame();
+        gm.ResumeGame();
     }
 
     public void CloseAdButtonHandler1()
