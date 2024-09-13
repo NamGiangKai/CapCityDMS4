@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent onMainMenu = new UnityEvent(); // Event for returning to the main menu
     public UnityEvent<float> onScoreUpdated = new UnityEvent<float>(); // Score update event
     public UnityEvent onPlayerDie = new UnityEvent(); // Event triggered when the player dies
+    public UnityEvent onResume = new UnityEvent(); // Event for resuming the game
 
     private void Start()
     {
@@ -149,21 +150,20 @@ public class GameManager : MonoBehaviour
         GameOver();
     }
 
-    // New method to resume the game after closing the ad
-    public void ResumeGame()
-    {
-        if (isPlaying) return; // If already playing, no need to resume
+    // Updated method to resume the game after closing the ad
+ public void ResumeGame()
+{
+    isPlaying = true;
+    Time.timeScale = 1; // Resume the game
 
-        isPlaying = true; // Set the game state to playing
-        Time.timeScale = 1; // Resume game time
-        // Additional logic to resume the game if needed (e.g., enabling controls, animations, etc.)
-    }
-    public void RestartGame()
+    // Resume background scrolling
+    if (scrollingBackground != null)
     {
-        // Reset any necessary game variables here
-        // e.g., reset score, position, obstacles, etc.
-
-        // Restart the game logic
-        StartGame();
+        scrollingBackground.ResumeBackgroundScrolling(); // Call to resume scrolling
     }
+
+    // Invoke the resume event to notify other systems that the game has resumed
+    onResume.Invoke();
+}
+
 }

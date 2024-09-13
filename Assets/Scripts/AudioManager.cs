@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip button1;
     public AudioClip button2;
     public AudioClip button3;
+    public AudioClip coin;
+    public AudioClip purchase;
 
 
 
@@ -139,6 +141,15 @@ public class AudioManager : MonoBehaviour
         PlaySFX(button3);
     }
 
+    public void PlayCoinSound()
+    {
+        PlaySFX(coin);
+    }
+
+    public void PlayPurchaseSound()
+    {
+        PlaySFX(purchase);
+    }
 }
 
 

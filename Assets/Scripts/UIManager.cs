@@ -88,13 +88,10 @@ public class UIManager : MonoBehaviour
         }
 
         gameOverADUI.SetActive(true);
-
-        // Pause the game when the ad is displayed
-        PauseGame();
     }
 
     // New method to show ad video and close button
-    public void ShowAdVideo()
+    private void ShowAdVideo()
     {
         if (adVideoUI == null || adCloseButton == null)
         {
@@ -118,28 +115,14 @@ public class UIManager : MonoBehaviour
         adVideoUI.SetActive(false); // Hide ad video UI
         adCloseButton.SetActive(false); // Hide close button
         gameOverADUI.SetActive(false); // Hide game over ad UI
-
-        // Resume the game and restart
-        ResumeGame();
-        ReplayGame();
+        gm.ResumeGame(); // Resume the game without triggering game over
     }
 
-    // Pauses the game by setting the time scale to 0
-    private void PauseGame()
+    public void CloseAdButtonHandler1()
     {
-        Time.timeScale = 0f;
-    }
-
-    // Resumes the game by setting the time scale back to 1
-    private void ResumeGame()
-    {
-        Time.timeScale = 1f;
-    }
-
-    // Restarts the game after ad video closes
-    private void ReplayGame()
-    {
-        gm.RestartGame();  // Make sure the GameManager has a RestartGame method to properly reset the game state
+        gameOverADUI.SetActive(false); // Hide game over ad UI
+        ActivateGameOverUI();
+        Time.timeScale = 1;
     }
 
     public void ActivateGameOverUI()
@@ -147,7 +130,7 @@ public class UIManager : MonoBehaviour
         if (gameOverUI == null || gameOverScoreUI == null || gameOverHighscoreUI == null)
         {
             Debug.LogError("GameOverUI, GameOverScoreUI, or GameOverHighscoreUI is not assigned.");
-            return;
+            return; 
         }
 
         gameOverUI.SetActive(true);

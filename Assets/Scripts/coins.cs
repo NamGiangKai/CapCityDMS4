@@ -6,6 +6,7 @@ public class Coin : MonoBehaviour
 {
     public int value;
     private Animator animator;
+    private AudioManager audioManager;
     private bool isCollected = false; // To prevent multiple triggers
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class Coin : MonoBehaviour
             isCollected = true; // Set the flag to prevent multiple triggers
             CoinCounter.instance.IncreaseCoins(value);
             PlayDisappearAnimation(); // Play the coin disappear animation
+            audioManager.PlayCoinSound(); 
         }
     }
 

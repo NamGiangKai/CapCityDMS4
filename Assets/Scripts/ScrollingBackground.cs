@@ -47,6 +47,11 @@ public class ScrollingBackground : MonoBehaviour
         speed = 0;
     }
 
+    public void ResumeBackgroundScrolling()
+    {
+        speed = initialSpeed; // Resume scrolling at the initial speed
+    }
+
     private void ResetBackground()
     {
         speed = initialSpeed; // Reset speed to initial
