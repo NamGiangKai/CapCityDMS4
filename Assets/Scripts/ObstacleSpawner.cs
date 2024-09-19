@@ -24,7 +24,7 @@ public class ObstacleSpawner : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.onGameOver.AddListener(ClearObstacles);
-        GameManager.Instance.onPlay.AddListener(ResetFactors);
+        GameManager.Instance.onPlay.AddListener(ResetSpawner);
 
         InitializePools();
     }
@@ -92,12 +92,10 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (spawnSpecialObstacle)
         {
-            // Randomly select a special obstacle from the array
             obstacleToSpawn = specialObstaclePrefabs[Random.Range(0, specialObstaclePrefabs.Length)];
         }
         else
         {
-            // Randomly select a regular obstacle from the array
             obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
         }
 
@@ -109,7 +107,20 @@ public class ObstacleSpawner : MonoBehaviour
             spawnedObstacle.SetActive(true);
 
             Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>();
-            obstacleRB.velocity = Vector2.left * _obstacleSpeed;
+
+            // Debug log to check the Rigidbody2D component
+            if (obstacleRB == null)
+            {
+                Debug.LogError("Rigidbody2D component not found on " + spawnedObstacle.name);
+                return;
+            }
+
+            Debug.Log("Setting velocity. Obstacle speed: " + _obstacleSpeed);
+            Vector2 movement = new Vector2(-_obstacleSpeed, obstacleRB.velocity.y);
+            obstacleRB.velocity = movement;
+
+            // Debug log to verify velocity assignment
+            Debug.Log("Velocity set to: " + obstacleRB.velocity);
         }
     }
 
@@ -147,19 +158,26 @@ public class ObstacleSpawner : MonoBehaviour
         _obstacleSpeed = obstacleSpeed * Mathf.Pow(timeAlive, obstacleSpeedFactor);
     }
 
-    private void ResetFactors()
+    private void ResetSpawner()
     {
+        // Reset the time alive and factors
         timeAlive = 1f;
         _obstacleSpawnTime = obstacleSpawnTime;
         _obstacleSpeed = obstacleSpeed;
+
+        // Reset the special obstacle flag
+        spawnSpecialObstacle = false;
+
+        // Ensure all obstacles are cleared
+        ClearObstacles();
     }
 
     public void CheckScore()
     {
         int score = Mathf.RoundToInt(GameManager.Instance.currentScore);
 
-        // Check if the score is a multiple of 50
-        if (score % 50 == 0 && score != 0)
+        // Check if the score is a multiple of 20
+        if (score % 20 == 0 && score != 0)
         {
             if (!spawnSpecialObstacle)
             {

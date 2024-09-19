@@ -5,22 +5,26 @@ public class PlayerCollision : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody2D rb;
-    private bool isDead = false;
+    public bool isDead = false;
     private AudioManager audioManager;
 
     // Start position of the player
     public Vector2 startPosition = new Vector2(0, 0);
 
+    public ScrollingBackground scrollingBackground;
+
     private void Start()
     {
         GameManager.Instance.onPlay.AddListener(ActivatePlayer);
         GameManager.Instance.onGameOver.AddListener(HandleGameOver);
+        GameManager.Instance.onResume.AddListener(ResetPlayerState); // Add listener to reset player on resume
+
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         audioManager = FindObjectOfType<AudioManager>(); // Find and store the AudioManager
     }
 
-    private void ActivatePlayer()
+    public void ActivatePlayer()
     {
         gameObject.SetActive(true);
         transform.position = startPosition; // Reset player position
@@ -66,15 +70,16 @@ public class PlayerCollision : MonoBehaviour
 
     private IEnumerator GameOverAfterDelay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0f);
         GameManager.Instance.GameOver();
     }
 
-    private void ResetPlayerState()
+    public void ResetPlayerState()
     {
-        rb.isKinematic = false;
-        rb.velocity = Vector2.zero;
-        animator.SetBool("IsAlive", true);
-        isDead = false;
+        rb.isKinematic = false; // Enable Rigidbody movement
+        rb.velocity = Vector2.zero; // Reset velocity
+        transform.position = startPosition; // Reset player position to start position
+        animator.SetBool("IsAlive", true); // Set IsAlive to true
+        isDead = false; // Reset death state
     }
 }

@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
 
+
     [Header("--------- Audio Clip ---------")]
     public AudioClip background;
     public AudioClip death;
@@ -15,47 +16,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip button1;
     public AudioClip button2;
     public AudioClip button3;
+    public AudioClip coin;
+    public AudioClip purchase;
 
-    // [Header("--------- Music Playlist ---------")]
-    // public List<AudioClip> musicPlaylist = new List<AudioClip>();
-    // private int currentTrackIndex = 0;
 
-    // void Start()
-    // {
-    //     if (musicPlaylist.Count > 0)
-    //     {
-    //         PlayNextTrack();
-    //     }
-    // }
-
-    // void Update()
-    // {
-    //     if (!musicSource.isPlaying && musicPlaylist.Count > 0)
-    //     {
-    //         PlayNextTrack();
-    //     }
-
-    // }
-
-    // void PlayNextTrack()
-    // {
-    //     musicSource.clip = musicPlaylist[currentTrackIndex];
-    //     musicSource.Play();
-    //     currentTrackIndex = (currentTrackIndex + 1) % musicPlaylist.Count;
-    // }
-
-    // public void AddMusicTrack(AudioClip newTrack)
-    // {
-    //     musicPlaylist.Add(newTrack);
-    // }
-
-    // public void RemoveMusicTrack(AudioClip trackToRemove)
-    // {
-    //     if (musicPlaylist.Contains(trackToRemove))
-    //     {
-    //         musicPlaylist.Remove(trackToRemove);
-    //     }
-    // }
 
     void Start()
     {
@@ -134,4 +98,19 @@ public class AudioManager : MonoBehaviour
     {
         PlaySFX(button3);
     }
+
+    public void PlayCoinSound()
+    {
+        PlaySFX(coin);
+    }
+
+    public void PlayPurchaseSound()
+    {
+        PlaySFX(purchase);
+    }
 }
+
+
+    
+
+

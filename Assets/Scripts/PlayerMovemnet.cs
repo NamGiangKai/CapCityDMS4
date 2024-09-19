@@ -79,6 +79,9 @@ public class PlayerMovement : MonoBehaviour
         // Play the death sound and stop the run sound
         audioManager.PlayDeathSound();
         // Handle the rest of the death logic here...
+        // Reset the coin counter when the player dies
+        // Existing death logic, e.g., playing sound, animation, etc.
+        GameManager.Instance.PlayerDied(); // Notify GameManager that the player has died
     }
 
     void OnDrawGizmos()

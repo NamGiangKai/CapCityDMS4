@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScrollingBackground : MonoBehaviour
 {
     public float speed; // Speed at which the background scrolls
+    public float initialSpeed; // To store the initial speed
     public GameObject[] backgrounds; // Array of background images
     public float fadeDuration = 1f; // Duration of the fade animation
     public int scoreThreshold = 70; // Score required to change the background
@@ -16,6 +17,10 @@ public class ScrollingBackground : MonoBehaviour
 
     void Start()
     {
+        initialSpeed = speed; // Store the initial speed
+        GameManager.Instance.onGameOver.AddListener(StopBackgroundScrolling);
+        GameManager.Instance.onPlay.AddListener(ResetBackground); // Listening to a game start event
+
         foreach (GameObject background in backgrounds)
         {
             background.SetActive(false); // Deactivate all backgrounds initially
@@ -34,21 +39,52 @@ public class ScrollingBackground : MonoBehaviour
             bgRenderer.material.mainTextureOffset += new Vector2(speed * Time.deltaTime, 0);
         }
 
-        CheckScoreForBackgroundChange();
+        // CheckScoreForBackgroundChange();
+    }
+
+    private void StopBackgroundScrolling()
+    {
+        speed = 0;
+    }
+
+    public void ResumeBackgroundScrolling()
+    {
+        speed = initialSpeed; // Resume scrolling at the initial speed
+    }
+
+    private void ResetBackground()
+    {
+        speed = initialSpeed; // Reset speed to initial
+        currentBackgroundIndex = 0; // Reset the background index
+        lastThresholdScore = 0; // Reset score threshold tracking
+
+        foreach (GameObject background in backgrounds)
+        {
+            background.SetActive(false); // Deactivate all backgrounds
+        }
+        if (backgrounds.Length > 0)
+        {
+            backgrounds[currentBackgroundIndex].SetActive(true); // Activate the first background again
+            bgRenderer = backgrounds[currentBackgroundIndex].GetComponent<Renderer>();
+        }
+
+        // Reset texture offset
+        if (bgRenderer != null)
+        {
+            bgRenderer.material.mainTextureOffset = Vector2.zero;
+        }
     }
 
     private void CheckScoreForBackgroundChange()
     {
         int currentScore = Mathf.RoundToInt(GameManager.Instance.currentScore);  // Ensure currentScore is an integer
 
-        // Check if the player's score has reached the next multiple of the threshold
         if (currentScore >= lastThresholdScore + scoreThreshold)
         {
             lastThresholdScore += scoreThreshold;  // Update the last threshold to avoid multiple triggers
             TransitionToNextBackground();
         }
     }
-
 
     public void TransitionToNextBackground()
     {
@@ -87,35 +123,34 @@ public class ScrollingBackground : MonoBehaviour
     }
 
     private IEnumerator FadeOut(GameObject background, Renderer renderer, float duration)
-{
-    float timer = 0f;
-    Color color = renderer.material.color;
-
-    while (timer < duration)
     {
-        float alpha = Mathf.SmoothStep(1f, 0f, timer / duration);
-        renderer.material.color = new Color(color.r, color.g, color.b, alpha);
-        timer += Time.deltaTime;
-        yield return null;
+        float timer = 0f;
+        Color color = renderer.material.color;
+
+        while (timer < duration)
+        {
+            float alpha = Mathf.SmoothStep(1f, 0f, timer / duration);
+            renderer.material.color = new Color(color.r, color.g, color.b, alpha);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        renderer.material.color = new Color(color.r, color.g, color.b, 0f);
     }
 
-    renderer.material.color = new Color(color.r, color.g, color.b, 0f);
-}
-
-private IEnumerator FadeIn(GameObject background, Renderer renderer, float duration)
-{
-    float timer = 0f;
-    Color color = renderer.material.color;
-
-    while (timer < duration)
+    private IEnumerator FadeIn(GameObject background, Renderer renderer, float duration)
     {
-        float alpha = Mathf.SmoothStep(0f, 1f, timer / duration);
-        renderer.material.color = new Color(color.r, color.g, color.b, alpha);
-        timer += Time.deltaTime;
-        yield return null;
+        float timer = 0f;
+        Color color = renderer.material.color;
+
+        while (timer < duration)
+        {
+            float alpha = Mathf.SmoothStep(0f, 1f, timer / duration);
+            renderer.material.color = new Color(color.r, color.g, color.b, alpha);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        renderer.material.color = new Color(color.r, color.g, color.b, 1f);
     }
-
-    renderer.material.color = new Color(color.r, color.g, color.b, 1f);
-}
-
 }
