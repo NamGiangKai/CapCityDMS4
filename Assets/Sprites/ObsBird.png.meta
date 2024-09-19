@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Sprites/Gold.png.meta
+guid: 7c09ea8249110b346943d8ccc4235c53
+========
 guid: 44a82117fd522824794637b838ccfb69
+>>>>>>>> Tien:Assets/Sprites/ObsBird.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

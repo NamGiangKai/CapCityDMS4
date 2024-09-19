@@ -39,7 +39,40 @@ public class ScrollingBackground : MonoBehaviour
             bgRenderer.material.mainTextureOffset += new Vector2(speed * Time.deltaTime, 0);
         }
 
-        CheckScoreForBackgroundChange();
+        // CheckScoreForBackgroundChange();
+    }
+
+    private void StopBackgroundScrolling()
+    {
+        speed = 0;
+    }
+
+    public void ResumeBackgroundScrolling()
+    {
+        speed = initialSpeed; // Resume scrolling at the initial speed
+    }
+
+    private void ResetBackground()
+    {
+        speed = initialSpeed; // Reset speed to initial
+        currentBackgroundIndex = 0; // Reset the background index
+        lastThresholdScore = 0; // Reset score threshold tracking
+
+        foreach (GameObject background in backgrounds)
+        {
+            background.SetActive(false); // Deactivate all backgrounds
+        }
+        if (backgrounds.Length > 0)
+        {
+            backgrounds[currentBackgroundIndex].SetActive(true); // Activate the first background again
+            bgRenderer = backgrounds[currentBackgroundIndex].GetComponent<Renderer>();
+        }
+
+        // Reset texture offset
+        if (bgRenderer != null)
+        {
+            bgRenderer.material.mainTextureOffset = Vector2.zero;
+        }
     }
 
     private void StopBackgroundScrolling()
